@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomy of Scapula of Horse - Dr. Ibrahim Elkheshen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: #111827;
+            --card-border: #1f293d;
+            --gold-primary: #fbbf24;
+            --gold-glow: #f59e0b;
+            --blue-accent: #38bdf8;
+            --blue-deep: #0284c7;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .presentation {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            width: 100%;
+            height: calc(100vh - 65px);
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            max-width: 1100px;
+            height: 100%;
+            background: linear-gradient(145deg, #131c2e, #0c121e);
+            border: 2px solid #1e293b;
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .slide-header {
+            border-bottom: 2px solid rgba(251, 191, 36, 0.2);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .slide-title {
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+            font-weight: 800;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-shadow: 0 2px 10px rgba(251, 191, 36, 0.2);
+        }
+
+        .slide-title span {
+            font-size: 0.95rem;
+            color: var(--blue-accent);
+            font-weight: 600;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 1.5rem;
+            align-items: center;
+            height: 100%;
+        }
+
+        .content-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #e2e8f0;
+        }
+
+        .content-text ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .content-text li {
+            margin-bottom: 0.7rem;
+            position: relative;
+            padding-left: 1.4rem;
+        }
+
+        .content-text li::before {
+            content: "❖";
+            color: var(--gold-primary);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 0.85rem;
+        }
+
+        .latin {
+            font-family: 'Poppins', sans-serif;
+            color: var(--gold-primary);
+            font-weight: 700;
+            background: rgba(251, 191, 36, 0.1);
+            padding: 1px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(251, 191, 36, 0.25);
+        }
+
+        .highlight-box {
+            background: rgba(56, 189, 248, 0.08);
+            border-left: 4px solid var(--blue-accent);
+            padding: 0.7rem 0.9rem;
+            border-radius: 6px;
+            margin-top: 0.6rem;
+            font-size: 0.92rem;
+        }
+
+        .image-box {
+            background: #090e17;
+            border: 2px solid #1f293d;
+            border-radius: 16px;
+            padding: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 8px 20px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .real-img {
+            width: 100%;
+            max-height: 220px;
+            object-fit: contain;
+            border-radius: 8px;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+        }
+
+        .pointer-tag {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-glow));
+            color: #090d16;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 8px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+
+        .cover-slide {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            direction: rtl;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .cover-title {
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+            font-weight: 900;
+            text-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .cover-sub {
+            font-size: 1.3rem;
+            color: var(--blue-accent);
+            font-weight: 700;
+        }
+
+        .info-card {
+            background: rgba(17, 24, 39, 0.9);
+            border: 2px solid var(--gold-primary);
+            border-radius: 14px;
+            padding: 1rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 650px;
+            width: 90%;
+        }
+
+        .thank-slide {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            direction: rtl;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .thank-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--gold-primary);
+            text-shadow: 0 4px 25px rgba(251, 191, 36, 0.4);
+            letter-spacing: 2px;
+        }
+
+        .signature-card {
+            background: #0d131f;
+            border: 2px solid var(--blue-accent);
+            padding: 1.2rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .sig-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gold-primary);
+            text-shadow: 0 2px 10px rgba(251, 191, 36, 0.3);
+            direction: ltr;
+        }
+
+        /* Footer Fixed Controls */
+        .footer-controls {
+            height: 65px;
+            background-color: #0b0f19;
+            border-top: 2px solid #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            flex-shrink: 0;
+            direction: rtl;
+            position: relative;
+            z-index: 9999;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-glow));
+            color: #090d16;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+            background: var(--gold-primary);
+        }
+
+        .btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .page-num {
+            font-family: 'Poppins', sans-serif;
+            color: var(--blue-accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 4px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <main class="presentation">
+
+        <!-- Slide 1: Cover -->
+        <div class="slide active" id="slide-1">
+            <div class="cover-slide">
+                <div>
+                    <h1 class="cover-title">Presentation of Scapula of Horse</h1>
+                    <p class="cover-sub">Equine Scapular Anatomy & Morphological Features</p>
+                </div>
+
+                <div class="info-card">
+                    <p style="font-size: 1rem; color: var(--blue-accent); font-weight: 700; margin-bottom: 0.3rem;">إهداء إلى:</p>
+                    <p style="font-size: 1.4rem; font-weight: 800; color: var(--gold-primary); margin-bottom: 0.2rem;">الأستاذ الدكتور / محمد عبد العزيز</p>
+                    <p style="font-size: 1rem; color: #cbd5e1;">أستاذ التشريح والأجنة - كلية الطب البيطري - جامعة الزقازيق</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" id="slide-2">
+            <div class="slide-header">
+                <h2 class="slide-title">
+                    General Features & Attachment
+                    <span>01</span>
+                </h2>
+            </div>
+            <div class="grid-container">
+                <div class="content-text">
+                    <ul>
+                        <li><strong>Bone Type:</strong> Flat triangular bone located on the anterolateral wall of the thorax.</li>
+                        <li><strong>Attachment to Thorax:</strong> No bony articulation with the thoracic cage; attached purely by muscles (<span class="latin">Synsarcosis</span>).</li>
+                        <li><strong>Joint Formation:</strong> Articulates distally with the Humerus to form the <span class="latin">Shoulder Joint</span>.</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <strong>Clinical Note:</strong> Shoulder joint lacks true collateral ligaments and is functionally stabilized by surrounding musculature.
+                    </div>
+                </div>
+                <div class="image-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Horse_scapula_lateral_view.png/400px-Horse_scapula_lateral_view.png" alt="Horse Scapula Lateral View" class="real-img">
+                    <div class="pointer-tag">Equine Scapula - Lateral Aspect</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" id="slide-3">
+            <div class="slide-header">
+                <h2 class="slide-title">
+                    Spine of Scapula & Acromion Status
+                    <span>02</span>
+                </h2>
+            </div>
+            <div class="grid-container">
+                <div class="content-text">
+                    <ul>
+                        <li><strong>Spine of Scapula (<span class="latin">Spina Scapulae</span>):</strong> Prominent ridge crossing the lateral surface.</li>
+                        <li><strong>Tuber Spinae:</strong> Thickened prominence located near the middle of the spine.</li>
+                        <li><strong>Acromion Process:</strong> <span class="latin" style="color: #ef4444; border-color: #ef4444;">ABSENT in Horse</span>; the spine fades distally.</li>
+                        <li><strong>Nutrient Foramen:</strong> Located in the distal third near the caudal border or medial aspect.</li>
+                    </ul>
+                </div>
+                <div class="image-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Horse_scapula_lateral_view.png/400px-Horse_scapula_lateral_view.png" alt="Spine of Scapula" class="real-img">
+                    <div class="pointer-tag">Spina Scapulae & Tuber Spinae</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide" id="slide-4">
+            <div class="slide-header">
+                <h2 class="slide-title">
+                    Lateral Surface & Fossae Ratio
+                    <span>03</span>
+                </h2>
+            </div>
+            <div class="grid-container">
+                <div class="content-text">
+                    <ul>
+                        <li>The Spine divides the <span class="latin">Facies Lateralis</span> into two unequal fossae:</li>
+                        <li><strong>Supraspinous Fossa:</strong> Smaller cranial fossa.</li>
+                        <li><strong>Infraspinous Fossa:</strong> Larger caudal fossa.</li>
+                        <li><strong>Anatomical Ratio:</strong> Supraspinous to Infraspinous ratio in horse is approximately <span class="latin">1 : 2</span>.</li>
+                    </ul>
+                </div>
+                <div class="image-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Horse_scapula_lateral_view.png/400px-Horse_scapula_lateral_view.png" alt="Fossae Ratio" class="real-img">
+                    <div class="pointer-tag">Fossae Ratio (1 : 2)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide" id="slide-5">
+            <div class="slide-header">
+                <h2 class="slide-title">
+                    Medial Surface & Facies Serrata
+                    <span>04</span>
+                </h2>
+            </div>
+            <div class="grid-container">
+                <div class="content-text">
+                    <ul>
+                        <li><strong>Medial Surface (<span class="latin">Facies Medialis</span>):</strong> Costal aspect facing the thoracic wall.</li>
+                        <li><strong>Subscapular Fossa:</strong> Wide concave area occupying middle & lower medial surface.</li>
+                        <li><strong>Facies Serrata:</strong> 
+                            <ul>
+                                <li>Two rough triangular areas at the proximal angles.</li>
+                                <li>Insertion site for <span class="latin">Serratus Ventralis Muscle</span>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="image-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Horse_scapula_medial_view.png/400px-Horse_scapula_medial_view.png" alt="Medial View" class="real-img">
+                    <div class="pointer-tag">Medial View - Facies Serrata</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide" id="slide-6">
+            <div class="slide-header">
+                <h2 class="slide-title">
+                    Glenoid Cavity & Extremity
+                    <span>05</span>
+                </h2>
+            </div>
+            <div class="grid-container">
+                <div class="content-text">
+                    <ul>
+                        <li><strong>Glenoid Cavity:</strong> Oval articular concavity for Head of Humerus.</li>
+                        <li><strong>Glenoid Notch:</strong> Distinct notch on the anteromedial border of glenoid cavity.</li>
+                        <li><strong>Supraglenoid Tubercle:</strong> Large prominent tubercle anterior to glenoid cavity for Biceps Brachii origin.</li>
+                        <li><strong>Coracoid Process:</strong> Small tubercle on medial side of Supraglenoid tubercle.</li>
+                    </ul>
+                </div>
+                <div class="image-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Glenoid_cavity_equine.png/400px-Glenoid_cavity_equine.png" alt="Glenoid Cavity" class="real-img">
+                    <div class="pointer-tag">Glenoid Cavity & Supraglenoid Tubercle</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide" id="slide-7">
+            <div class="slide-header">
+                <h2 class="slide-title">
+                    Summary of Equine Scapular Features
+                    <span>06</span>
+                </h2>
+            </div>
+            <div class="grid-container">
+                <div class="content-text">
+                    <ul>
+                        <li><strong>Triangular Shape:</strong> Flat bone attached via <span class="latin">Synsarcosis</span>.</li>
+                        <li><strong>Acromion Process:</strong> <span class="latin" style="color: #ef4444; border-color: #ef4444;">ABSENT</span> in horses.</li>
+                        <li><strong>Tuber Spinae:</strong> Well-developed central tuberosity on spine.</li>
+                        <li><strong>Fossae Ratio:</strong> Supraspinous to Infraspinous is <span class="latin">1 : 2</span>.</li>
+                        <li><strong>Facies Serrata:</strong> Two triangular rough areas proximally.</li>
+                        <li><strong>Glenoid Notch:</strong> Present on anteromedial margin of Glenoid Cavity.</li>
+                    </ul>
+                </div>
+                <div class="image-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Horse_scapula_lateral_view.png/400px-Horse_scapula_lateral_view.png" alt="Summary View" class="real-img">
+                    <div class="pointer-tag">Equine Scapula Anatomical Summary</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Thank You -->
+        <div class="slide" id="slide-8">
+            <div class="thank-slide">
+                <h1 class="thank-title">شُكْرًا لَكُمْ!</h1>
+                <p style="color: #cbd5e1; font-size: 1.25rem;">أتمنى أن ينال هذا العرض إعجابكم</p>
+
+                <div class="signature-card">
+                    <p style="color: var(--blue-accent); font-weight: 700; margin-bottom: 0.3rem;">تم الإعداد بواسطة:</p>
+                    <p class="sig-name">BY / Dr. Ibrahim Elkheshen</p>
+                    <p style="color: #cbd5e1; font-size: 1.1rem; margin-top: 0.5rem; font-weight: 700;">Section 1</p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.2rem;">كلية الطب البيطري - جامعة الزقازيق</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Navigation Footer -->
+    <footer class="footer-controls">
+        <button class="btn" id="prevBtn" onclick="changeSlide(-1)">السابق</button>
+        <span class="page-num" id="pageIndicator">1 / 8</span>
+        <button class="btn" id="nextBtn" onclick="changeSlide(1)">التالي</button>
+    </footer>
+
+    <!-- JavaScript Navigation Engine -->
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const pageIndicator = document.getElementById('pageIndicator');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateSlider() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentIndex) {
+                    slide.classList.add('active');
+                }
+            });
+            pageIndicator.textContent = (currentIndex + 1) + ' / ' + totalSlides;
+            
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = 0;
+            } else if (currentIndex >= totalSlides) {
+                currentIndex = totalSlides - 1;
+            }
+            updateSlider();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+                changeSlide(1);
+            } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+                changeSlide(-1);
+            }
+        });
+
+        updateSlider();
+    </script>
+</body>
+</html>
